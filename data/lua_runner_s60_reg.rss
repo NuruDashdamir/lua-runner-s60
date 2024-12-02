@@ -1,0 +1,19 @@
+/*
+============================================================================
+ Name        : lua_runner_s60_reg.rss
+ Description : This file contains all the resources for the lua_runner_s60.
+============================================================================
+*/
+
+#include <appinfo.rh>
+
+UID2 KUidAppRegistrationResourceFile
+UID3 0xE275C254
+
+RESOURCE APP_REGISTRATION_INFO
+    {
+    app_file = "lua_runner_s60";
+    embeddability = KAppNotEmbeddable;
+    newfile = KAppDoesNotSupportNewFile;
+    }
+

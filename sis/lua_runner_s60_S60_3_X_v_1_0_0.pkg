@@ -1,0 +1,32 @@
+; Installation file for lua_runner_s60 application
+;
+; This is an auto-generated PKG file by Carbide.
+; This file uses variables specific to Carbide builds that will not work
+; on command-line builds. If you want to use this generated PKG file from the
+; command-line tools you will need to modify the variables with the appropriate
+; values: $(EPOCROOT), $(PLATFORM), $(TARGET)
+;
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"lua_runner_s60"},(0xE275C254),1,0,0
+
+;Localised Vendor name
+%{"Vendor-EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+; Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"S60ProductID"}
+
+; Files to install
+; Symbols set up for the source location are Carbide.c++ specific symbols
+"$(EPOCROOT)epoc32\release\$(PLATFORM)\$(TARGET)\lua_runner_s60.exe"             -"!:\sys\bin\lua_runner_s60.exe"
+"$(EPOCROOT)epoc32\data\z\private\10003a3f\import\apps\lua_runner_s60_reg.rsc"   -"!:\private\10003a3f\import\apps\lua_runner_s60_reg.rsc"
+
+; required for application to be covered by backup/restore facility 
+"..\sis\backup_registration.xml"    -"!:\private\E275C254\backup_registration.xml"

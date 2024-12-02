@@ -1,0 +1,46 @@
+/*
+============================================================================
+ Name        : lua_runner_s60.mmp
+ Description : This is the project specification file for lua_runner_s60.
+============================================================================
+*/
+
+TARGET          lua_runner_s60.exe
+TARGETTYPE      exe
+UID             0x100039CE 0xE275C254
+VENDORID        0
+
+MACRO LUA_USE_POSIX
+MACRO LUA_USE_C89
+MACRO CLOCKS_PER_SEC=1000 //this value is likely to be incorrect
+MACRO l_signalT=int
+
+SOURCEPATH      ..\data
+START RESOURCE  lua_runner_s60_reg.rss
+#ifdef WINSCW
+TARGETPATH      \private\10003a3f\apps
+#else
+TARGETPATH      \private\10003a3f\import\apps
+#endif
+END //RESOURCE
+
+SOURCEPATH      ..\src
+SOURCE lua_runner_s60.cpp
+SOURCE lapi.c lauxlib.c lbaselib.c lcode.c lcorolib.c lctype.c ldblib.c ldebug.c ldo.c ldump.c lfunc.c lgc.c linit.c liolib.c llex.c lmathlib.c lmem.c loadlib.c lobject.c lopcodes.c loslib.c lparser.c lstate.c lstring.c lstrlib.c ltable.c ltablib.c ltm.c lundump.c lutf8lib.c lvm.c lzio.c
+
+USERINCLUDE     ..\inc
+
+SYSTEMINCLUDE   \epoc32\include\stdapis
+SYSTEMINCLUDE   \epoc32\include
+
+// Using main() as entry point
+STATICLIBRARY   libcrt0.lib
+
+// libc and euser are always needed when using main() entry point
+LIBRARY         libc.lib 
+LIBRARY         euser.lib
+LIBRARY         libm.lib libpthread.lib //added required libs
+
+// set all capabilities except TCB, DRM and AllFiles (like DevCert)
+CAPABILITY CommDD DiskAdmin LocalServices Location MultimediaDD NetworkControl NetworkServices PowerMgmt ProtServ ReadDeviceData ReadUserData SurroundingsDD SwEvent TrustedUI UserEnvironment WriteDeviceData WriteUserData
+
